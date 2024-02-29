@@ -116,7 +116,16 @@ function Navbar() {
         cursor={"pointer"}
         bg="#EBF8FF"
         p={2}
+        w={{
+          base: "113%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+      }}
        
+      
         fontSize={{
             base: "10px", // 0px
             sm: "10px", // ~480px. em is a relative unit and is dependant on the font-size.
@@ -221,6 +230,7 @@ function Navbar() {
       </Drawer>
 
       <Flex
+      
         borderBottom="1px"
         p={4}
         minWidth="max-content"
@@ -234,23 +244,40 @@ function Navbar() {
           xl: "row", // ~1280px
           "2xl": "row", // ~1536px
         }}
-        mr={{
-            base: "auto", // 0px
-            sm: "20%", // ~480px. em is a relative unit and is dependant on the font-size.
-            md: "0", // ~768px
-            lg: "0", // ~992px
-            xl: "0", // ~1280px
-            "2xl": "0",
+        // mr={{
+        //     base: "auto", // 0px
+        //     sm: "20%", // ~480px. em is a relative unit and is dependant on the font-size.
+        //     md: "0", // ~768px
+        //     lg: "0", // ~992px
+        //     xl: "0", // ~1280px
+        //     "2xl": "0",
+        // }}
+        w={{
+          base: "113%", // 0px
+              sm: "100%", // ~480px. em is a relative unit and is dependant on the font-size.
+              md: "100%", // ~768px
+              lg: "100%", // ~992px
+              xl: "100%", // ~1280px
+              "2xl": "100%",
         }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto",
+        }}
+       
 
-        ml={{
-            base: "auto", // 0px
-            sm: "20%", // ~480px. em is a relative unit and is dependant on the font-size.
-            md: "0", // ~768px
-            lg: "0", // ~992px
-            xl: "0", // ~1280px
-            "2xl": "0",
-        }}
+        // ml={{
+        //     base: "auto", // 0px
+        //     sm: "20%", // ~480px. em is a relative unit and is dependant on the font-size.
+        //     md: "0", // ~768px
+        //     lg: "0", // ~992px
+        //     xl: "0", // ~1280px
+        //     "2xl": "0",
+        // }}
       >
         {/* logo */}
         <Box p="2px">

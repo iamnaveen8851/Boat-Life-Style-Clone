@@ -1,11 +1,16 @@
 import "./App.css";
 
 
-// local component that useRedorect
+// local component imports
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
-  return <><Navbar/></>;
+  return <>
+  <Navbar/>
+  <br />
+  <Footer/>
+  </>;
 }
 
 export default App;
