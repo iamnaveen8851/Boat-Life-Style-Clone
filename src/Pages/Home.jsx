@@ -146,7 +146,7 @@ function Home() {
         }}
         color="white"
       >
-        <Slide duration={1000}>
+        <Slide duration={1400}>
           {images.map((image, index) => (
             <div key={index} style={eachsliderStyle}>
               <img src={image} alt="" />
