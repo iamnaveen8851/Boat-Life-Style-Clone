@@ -137,7 +137,7 @@ function Home() {
     <>
       <Box
         w={{
-          base: "480px",
+          base: "440px",
           sm: "410px",
           md: "803px",
           lg : "900px",
