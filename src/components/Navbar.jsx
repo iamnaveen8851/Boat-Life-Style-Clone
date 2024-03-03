@@ -350,7 +350,7 @@ function Navbar() {
           "2xl": "row", // ~1536px
         }}
         w={{
-          base: "110", // 0px
+          base: "113%", // 0px
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font-size.
           md: "100%", // ~768px
           lg: "100%", // ~992px
