@@ -1,7 +1,7 @@
 import {
   Flex,
   Box,
-  Link,
+  // Link,
   Image,
   Spacer,
   Button,
@@ -45,6 +45,7 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon, ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons"; // figureout how to add these by import
 
+import { Link } from "react-router-dom";
 import { useState } from "react";
 function Navbar() {
   // for Drawer and Modal we use this hook
@@ -123,16 +124,14 @@ function Navbar() {
           lg: "100%", // ~992px
           xl: "100%", // ~1280px
           "2xl": "100%", // ~1536px
-      }}
-       
-      
+        }}
         fontSize={{
-            base: "10px", // 0px
-            sm: "10px", // ~480px. em is a relative unit and is dependant on the font-size.
-            md: "12px", // ~768px
-            lg: "14px", // ~992px
-            xl: "14px", // ~1280px
-            "2xl": "16px", // ~1536px
+          base: "10px", // 0px
+          sm: "10px", // ~480px. em is a relative unit and is dependant on the font-size.
+          md: "12px", // ~768px
+          lg: "14px", // ~992px
+          xl: "14px", // ~1280px
+          "2xl": "16px", // ~1536px
         }}
       >
         <b>boAthead Days</b> &nbsp; <p>are coming! Leap into</p>
@@ -160,12 +159,17 @@ function Navbar() {
       />
       <Drawer isOpen={isHamMenuOpen} placement="left" onClose={closeHamMenu}>
         <DrawerOverlay />
-        <DrawerContent mt="5.2%" >
+        <DrawerContent mt="5.2%">
           <DrawerCloseButton />
           <DrawerHeader>Create your account</DrawerHeader>
 
-          <DrawerBody  display={"flex"} flexDirection={"column"} alignItems={"left"} justifyContent={"flex-start"} gap={4}>
-
+          <DrawerBody
+            display={"flex"}
+            flexDirection={"column"}
+            alignItems={"left"}
+            justifyContent={"flex-start"}
+            gap={4}
+          >
             <Link
               _hover={{
                 fontWeight: "550",
@@ -186,7 +190,7 @@ function Navbar() {
             >
               Gift with boAt
             </Link>
-            
+
             <Link
               _hover={{
                 fontWeight: "550",
@@ -197,12 +201,11 @@ function Navbar() {
             >
               Corporate Orders
             </Link>
-           
+
             {/* More hover button menu */}
-            <Menu  isOpen={isMoreHover} onClose={() => setIsMoreHover(false)}>
+            <Menu isOpen={isMoreHover} onClose={() => setIsMoreHover(false)}>
               <MenuButton
-              mr="80%"
-              
+                mr="80%"
                 variant="unstyled"
                 bg={"white"}
                 as={Button}
@@ -230,7 +233,11 @@ function Navbar() {
       </Drawer>
 
       <Flex
-      
+        position={"sticky"}
+        top="0"
+        zIndex="10"
+        bg="white"
+        
         borderBottom="1px"
         p={4}
         minWidth="max-content"
@@ -254,11 +261,11 @@ function Navbar() {
         // }}
         w={{
           base: "113%", // 0px
-              sm: "100%", // ~480px. em is a relative unit and is dependant on the font-size.
-              md: "100%", // ~768px
-              lg: "100%", // ~992px
-              xl: "100%", // ~1280px
-              "2xl": "100%",
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font-size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%",
         }}
         m={{
           base: "auto", // 0px
@@ -268,7 +275,6 @@ function Navbar() {
           xl: "auto", // ~1280px
           "2xl": "auto",
         }}
-       
 
         // ml={{
         //     base: "auto", // 0px
@@ -281,7 +287,7 @@ function Navbar() {
       >
         {/* logo */}
         <Box p="2px">
-          <Link>
+          <Link to="/">
             {" "}
             <Image
               src="https://www.boat-lifestyle.com/cdn/shop/files/boAt_logo_small_3067da8c-a83b-46dd-b28b-6ef1e16ccd17_small.svg?v=1693549434"
@@ -301,13 +307,12 @@ function Navbar() {
             xl: "flex", // ~1280px
             "2xl": "flex", // ~1536px
           }}
-
           justifyContent={"space-around"}
           alignItems={"center"}
           gap={5}
-        
         >
           <Link
+            to="/product"
             _hover={{
               fontWeight: "550",
               textDecoration: "underline",
@@ -318,6 +323,7 @@ function Navbar() {
             boAt Personalisation
           </Link>
           <Link
+            to="/product"
             _hover={{
               fontWeight: "550",
               textDecoration: "underline",
@@ -328,6 +334,7 @@ function Navbar() {
             Gift with boAt
           </Link>
           <Link
+            to="/product"
             _hover={{
               fontWeight: "550",
               textDecoration: "underline",
@@ -367,14 +374,16 @@ function Navbar() {
 
         <Spacer />
         {/* Search input */}
-        <Menu m={{
+        <Menu
+          m={{
             base: "auto", // 0px
             sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
             md: "auto", // ~768px
             lg: "auto", // ~992px
             xl: "auto", // ~1280px
             "2xl": "auto", // ~1536px
-        }}>
+          }}
+        >
           <MenuButton as={Button}>
             <SearchIcon />
             <Input borderRadius="50%" placeholder="Seach Boat Products" />
@@ -422,7 +431,7 @@ function Navbar() {
               Get <b>Started</b>
             </ModalHeader>
             <Text m="auto" fontSize="15px">
-              Please enter your Mobile Number to continue
+              Please Enter Your Mobile Number To Continue
             </Text>
             <ModalCloseButton />
             <ModalBody>
@@ -497,7 +506,7 @@ function Navbar() {
                   alt="Dan Abramov"
                 />
               </Box>
-              <Link ml="23%">
+              <Link to="/" style={{ marginLeft: "25%" }}>
                 <Button mt="10%" colorScheme="white" bg="black">
                   Start Shopping
                 </Button>

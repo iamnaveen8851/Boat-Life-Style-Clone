@@ -57,6 +57,7 @@ function Footer() {
 
   return (
     <>
+  
       <SimpleGrid
         bg="#EBF8FF"
         // w="98%"
@@ -68,6 +69,8 @@ function Footer() {
           xl: "98%", // ~1280px
           "2xl": "98%", // ~1536px
         }}
+
+        
         m={{
           base: "auto", // 0px
           sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
