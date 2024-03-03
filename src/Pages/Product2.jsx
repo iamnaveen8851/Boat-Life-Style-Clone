@@ -30,7 +30,7 @@ import {
 import { StarIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 
-function Product() {
+function Product2() {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
@@ -115,43 +115,7 @@ function Product() {
   }
   return (
     <>
-      {/* Shop by lifestyle celeb card */}
-      <Text textDecoration="underline" fontSize="30px" mt="5%" ml="3%">
-        Shop by <b>Lifestyle</b>{" "}
-      </Text>
-
-      <SimpleGrid
-        w="98%"
-        m="auto"
-        columns={4}
-        justifyContent={"center"}
-        alignItems={"center"}
-        spacing={1}
-      >
-        {shopCard.map((card, index) => (
-          <Box m="auto" key={index}>
-            <Card m="auto" boxShadow="none">
-              <CardBody>
-                <Image src={card.image} />
-                <Box bg="#EBF8FF" borderBottomRadius="20px" p={3}>
-                  <Heading fontSize="20px" mt="2%" textAlign="center">
-                    {card.msg}
-                  </Heading>
-                  <Link fontSize="16px" ml="35%">
-                    View all {<ArrowForwardIcon />}{" "}
-                  </Link>
-                </Box>
-              </CardBody>
-            </Card>
-          </Box>
-        ))}
-      </SimpleGrid>
-
-      <br />
-      <br />
-      <br />
-
-      <Text textDecoration="underline" fontSize="30px" mt="5%" ml="3%">
+        <Text textDecoration="underline" fontSize="30px" mt="5%" ml="3%">
         Best of <b>BoAt</b>{" "}
       </Text>
 
@@ -202,6 +166,42 @@ function Product() {
       </SimpleGrid>
       <br />
       <br />
+      <br />
+
+      {/* Shop by lifestyle celeb card */}
+      <Text textDecoration="underline" fontSize="30px" mt="5%" ml="3%">
+        Shop by <b>Lifestyle</b>{" "}
+      </Text>
+
+      <SimpleGrid
+        w="98%"
+        m="auto"
+        columns={4}
+        justifyContent={"center"}
+        alignItems={"center"}
+        spacing={1}
+      >
+        {shopCard.map((card, index) => (
+          <Box m="auto" key={index}>
+            <Card m="auto" boxShadow="none">
+              <CardBody>
+                <Image src={card.image} />
+                <Box bg="#EBF8FF" borderBottomRadius="20px" p={3}>
+                  <Heading fontSize="20px" mt="2%" textAlign="center">
+                    {card.msg}
+                  </Heading>
+                  <Link fontSize="16px" ml="35%">
+                    View all {<ArrowForwardIcon />}{" "}
+                  </Link>
+                </Box>
+              </CardBody>
+            </Card>
+          </Box>
+        ))}
+      </SimpleGrid>
+  
+      <br />
+      <br />
 
       <br />
       <Tabs variant="soft-rounded" colorScheme="gray">
@@ -242,8 +242,7 @@ function Product() {
                             {product.rating}
                           </Text>
                           <Spacer />
-                          <Button 
-                           onClick={() => handleCart(product)}
+                          <Button
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -289,7 +288,6 @@ function Product() {
                           </Text>
                           <Spacer />
                           <Button
-                           onClick={() => handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -337,7 +335,6 @@ function Product() {
                           </Text>
                           <Spacer />
                           <Button
-                           onClick={() => handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -445,4 +442,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default Product2;

@@ -100,22 +100,22 @@
       }
     ],
 
-    "shopHoldings" : [
+    "shopHoldings": [
       {
-        "image" : "https://www.boat-lifestyle.com/cdn/shop/files/shreyas-chronos-new.png?v=1696843687",
-        "msg" : "For Fitness"
+        "image": "https://www.boat-lifestyle.com/cdn/shop/files/shreyas-chronos-new.png?v=1696843687",
+        "msg": "For Fitness"
       },
       {
-        "image" : "https://www.boat-lifestyle.com/cdn/shop/files/Party_Animal_4.png?v=1685942349",
-        "msg" : "For Parties"
+        "image": "https://www.boat-lifestyle.com/cdn/shop/files/Party_Animal_4.png?v=1685942349",
+        "msg": "For Parties"
       },
       {
-        "image" : "https://www.boat-lifestyle.com/cdn/shop/files/Workaholic_2.png?v=1685083745",
-        "msg" : "For Work"
+        "image": "https://www.boat-lifestyle.com/cdn/shop/files/Workaholic_2.png?v=1685083745",
+        "msg": "For Work"
       },
       {
-        "image" : "https://www.boat-lifestyle.com/cdn/shop/files/Audiophile_5.png?v=1696328658",
-        "msg" : "For Audiophiles"
+        "image": "https://www.boat-lifestyle.com/cdn/shop/files/Audiophile_5.png?v=1696328658",
+        "msg": "For Audiophiles"
       }
     ]
   }

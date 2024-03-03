@@ -79,6 +79,15 @@ function Footer() {
           xl: "auto", // ~1280px
           "2xl": "auto",
         }}
+
+        mt={{
+          base: "270%", // 0px
+          sm: "32%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "40%", // ~768px
+          lg: "20%", // ~992px
+          xl: "12%", // ~1280px
+          "2xl": "10%",
+        }}
         p={5}
         columns={{
           base: "1", // 0px

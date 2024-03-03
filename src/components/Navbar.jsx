@@ -29,6 +29,7 @@ import {
   Stack,
   InputGroup,
   InputLeftElement,
+  InputRightAddon,
   Text,
   useToast,
   IconButton,
@@ -45,8 +46,11 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon, ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons"; // figureout how to add these by import
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+import axios from "axios";
+
 function Navbar() {
   // for Drawer and Modal we use this hook
   const {
@@ -54,26 +58,70 @@ function Navbar() {
     onClose: closeModal,
     onToggle: onModaltoggle,
   } = useDisclosure();
-  const {
-    isOpen: isDrawerOpen,
-    onOpen: openDrawer,
-    onClose: closeDrawer,
-  } = useDisclosure();
 
   const {
     isOpen: isHamMenuOpen,
     onOpen: openHamMenu,
     onClose: closeHamMenu,
   } = useDisclosure();
+
   //   to manage number state fro login
   const [number, setNumber] = useState("");
 
   //  to add hover effect so More dropdown will open
   const [isMoreHover, setIsMoreHover] = useState(false);
 
+  //for Drawer
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  //  To store cart data in the variable so we can display in the drawer
+  const [cartData, setCartData] = useState([]);
+
+  const navigate = useNavigate();
+
   //   To open modal
   function handleModal() {
     onModaltoggle();
+  }
+
+  // useEffect(() => {
+  //   const debounce = setTimeout(() => {
+  //     if (debounce != null) {
+  //       handleSearch();
+  //     }
+  //   }, 2000);
+
+  //   return () => {
+  //     clearTimeout(debounce);
+  //   };
+  // }, []);
+  // To see search  results
+  async function handleSearch(e) {
+    try {
+      let search = e.target.value.trim().toLowerCase();
+
+      let res = await axios.get(
+        `http://localhost:${
+          import.meta.env.VITE_BOAT_SERVER_PORT
+        }/products`
+      );
+
+      const { data1, data2, data3 } = res.data;
+      let arr = [...data1, ...data2, ...data3];
+
+
+
+    // Work on these lines to get search results
+    const filterProducts = arr.filter((product) => {
+      const match = product.name.toLowerCase() === search;
+      console.log(product.name.toLowerCase(), search, match);
+      return match;
+    });
+    console.log(filterProducts);
+    
+     
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // for login success full we use useTaast Hook
@@ -110,6 +158,57 @@ function Navbar() {
     //   here use `useNavigateHook`  to redirect user to home page
   }
 
+  console.log(cartData);
+
+  function handleCartDrawer() {
+    onOpen();
+    //   To add data in the local storage
+
+    // Step1.  if any old added data in the cart we'll retrieve it OR we can take an empty array if no data found in local storage
+    const existingCartData =
+      JSON.parse(localStorage.getItem("addToCart")) || [];
+    const updateCartData = [...existingCartData];
+
+    // Step3. updata the local storage with the modified cart data
+    localStorage.setItem("addToCart", JSON.stringify(updateCartData));
+    setCartData(updateCartData);
+  }
+  // To delete from the cart
+  function handleDelete(product) {
+    let filteredData = cartData.filter((ele) => {
+      return ele !== product;
+    });
+
+    localStorage.setItem("addToCart", JSON.stringify(filteredData));
+    setCartData(filteredData);
+  }
+
+  // to confirm order
+  const toast1 = useToast();
+  function handleOrder() {
+    if (cartData.length === 0) {
+      navigate("/product");
+    } else {
+      const examplePromise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(200), 1400);
+      });
+
+      toast1.promise(examplePromise, {
+        success: {
+          title: "Order Confirmed",
+          description: `You Order has successfully confirmed your order`,
+        },
+        error: {
+          title: "Order Failed",
+          description: `Something wrong check your Order`,
+        },
+        loading: { title: "Processing..." },
+      });
+
+      onClose();
+    }
+  }
+
   return (
     <>
       <Center
@@ -118,7 +217,7 @@ function Navbar() {
         bg="#EBF8FF"
         p={2}
         w={{
-          base: "113%", // 0px
+          base: "112%", // 0px
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "100%", // ~768px
           lg: "100%", // ~992px
@@ -237,7 +336,6 @@ function Navbar() {
         top="0"
         zIndex="10"
         bg="white"
-        
         borderBottom="1px"
         p={4}
         minWidth="max-content"
@@ -251,16 +349,8 @@ function Navbar() {
           xl: "row", // ~1280px
           "2xl": "row", // ~1536px
         }}
-        // mr={{
-        //     base: "auto", // 0px
-        //     sm: "20%", // ~480px. em is a relative unit and is dependant on the font-size.
-        //     md: "0", // ~768px
-        //     lg: "0", // ~992px
-        //     xl: "0", // ~1280px
-        //     "2xl": "0",
-        // }}
         w={{
-          base: "113%", // 0px
+          base: "112%", // 0px
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font-size.
           md: "100%", // ~768px
           lg: "100%", // ~992px
@@ -275,15 +365,6 @@ function Navbar() {
           xl: "auto", // ~1280px
           "2xl": "auto",
         }}
-
-        // ml={{
-        //     base: "auto", // 0px
-        //     sm: "20%", // ~480px. em is a relative unit and is dependant on the font-size.
-        //     md: "0", // ~768px
-        //     lg: "0", // ~992px
-        //     xl: "0", // ~1280px
-        //     "2xl": "0",
-        // }}
       >
         {/* logo */}
         <Box p="2px">
@@ -323,7 +404,7 @@ function Navbar() {
             boAt Personalisation
           </Link>
           <Link
-            to="/product"
+            to="/product1"
             _hover={{
               fontWeight: "550",
               textDecoration: "underline",
@@ -334,7 +415,7 @@ function Navbar() {
             Gift with boAt
           </Link>
           <Link
-            to="/product"
+            to="/product2"
             _hover={{
               fontWeight: "550",
               textDecoration: "underline",
@@ -384,17 +465,20 @@ function Navbar() {
             "2xl": "auto", // ~1536px
           }}
         >
-          <MenuButton as={Button}>
-            <SearchIcon />
-            <Input borderRadius="50%" placeholder="Seach Boat Products" />
-          </MenuButton>
-          <MenuList>
-            <MenuItem></MenuItem>
-            <MenuItem>Create a Copy</MenuItem>
-            <MenuItem>Mark as Draft</MenuItem>
-            <MenuItem>Delete</MenuItem>
-            <MenuItem>Attend a Workshop</MenuItem>
-          </MenuList>
+          <Box>
+            <InputGroup>
+              <Input
+                type="text"
+                placeholder="Search Products"
+                onChange={(e) => handleSearch(e)}
+              />
+              <InputRightAddon w="14%" pl="2%" borderRadius="0px">
+                <Button>
+                  <SearchIcon />
+                </Button>
+              </InputRightAddon>
+            </InputGroup>
+          </Box>
         </Menu>
         <Popover>
           <PopoverTrigger>
@@ -424,9 +508,9 @@ function Navbar() {
           </PopoverContent>
         </Popover>
         {/* Modal */}
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Modal  isOpen={isModalOpen} onClose={closeModal}>
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent ml="10%">
             <ModalHeader fontSize={25} textAlign={"center"}>
               Get <b>Started</b>
             </ModalHeader>
@@ -482,33 +566,54 @@ function Navbar() {
               </Center>
             </ModalBody>
 
-            <ModalFooter></ModalFooter>
+           
           </ModalContent>
         </Modal>
         {/* Drawer */}
-        <Button colorScheme="black" onClick={openDrawer}>
+        <Button colorScheme="black" onClick={handleCartDrawer}>
           <Image
             w="20px"
             src="https://static-00.iconduck.com/assets.00/shopping-bag-icon-1769x2048-wv307ji8.png"
           />
         </Button>
-        <Drawer isOpen={isDrawerOpen} placement="right" onClose={closeDrawer}>
+
+        {/* for cart drawer  */}
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>Your Cart</DrawerHeader>
 
             <DrawerBody>
-              <Box m="auto" w="50%">
-                <Image
-                  mt="50%"
-                  src="https://static-00.iconduck.com/assets.00/shopping-bag-icon-1769x2048-wv307ji8.png"
-                  alt="Dan Abramov"
-                />
-              </Box>
+              {cartData.length !== 0 ? (
+                cartData.map((product, index) => (
+                  <Box key={index} m="auto" w="60%">
+                    <Image mt="50%" src={product.image} alt={product.name} />
+                    <Text>Name :- {product.name}</Text>
+                    <Text>Price :- {product.price}</Text>
+                    <Text>Rating :- {product.rating}</Text>
+                    <Button  ml="20%" mt="5%" onClick={() => handleDelete(product)}>
+                      Remove
+                    </Button>
+                  </Box>
+                ))
+              ) : (
+                <Box m="auto" w="50%">
+                  <Image
+                    mt="50%"
+                    src="https://static-00.iconduck.com/assets.00/shopping-bag-icon-1769x2048-wv307ji8.png"
+                    alt="Dan Abramov"
+                  />
+                </Box>
+              )}
               <Link to="/" style={{ marginLeft: "25%" }}>
-                <Button mt="10%" colorScheme="white" bg="black">
-                  Start Shopping
+                <Button
+                  onClick={handleOrder}
+                  mt="10%"
+                  colorScheme="white"
+                  bg="black"
+                >
+                  {cartData.length > 0 ? "Confirm Order" : "Start Shopping"}
                 </Button>
               </Link>
             </DrawerBody>

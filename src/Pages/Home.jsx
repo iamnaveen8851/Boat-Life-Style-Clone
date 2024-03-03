@@ -18,8 +18,20 @@ import {
   TabList,
   TabPanels,
   TabPanel,
+  useDisclosure,
+  useToast,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
 } from "@chakra-ui/react";
 import { StarIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
+// for Slider-show
+import "react-slideshow-image/dist/styles.css";
+import { Slide } from "react-slideshow-image";
 
 function Home() {
   const [data1, setData1] = useState([]);
@@ -27,6 +39,12 @@ function Home() {
   const [data3, setData3] = useState([]);
   const [iconData, setIconData] = useState([]);
   const [shopCard, setShopCard] = useState([]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  //  To store cart data in the variable so we can display in the drawer
+  const [cartData, setCartData] = useState([]);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     getData();
   }, []);
@@ -47,33 +65,140 @@ function Home() {
     }
   }
 
-function handleCart(product){
-  
+  //   To add data in the local storage
+  function handleCart(product) {
+    onOpen();
+
     // Step1.  if any old added data in the cart we'll retrieve it OR we can take an empty array if no data found in local storage
-   const existingCartData = JSON.parse(localStorage.getItem('addToCart')) || []
+    const existingCartData =
+      JSON.parse(localStorage.getItem("addToCart")) || [];
 
-// Step2.  here we'll add the product object in the existing array 
-const updateCartData = [...existingCartData, product ]
+    // Step2.  here we'll add the product object in the existing array
+    const updateCartData = [...existingCartData, product];
 
+    // Step3. updata the local storage with the modified cart data
+    localStorage.setItem("addToCart", JSON.stringify(updateCartData));
 
-// Step3. updata the local storage with the modified cart data
-localStorage.setItem('addToCart', JSON.stringify(updateCartData))
-}
+    // To set the cart data in state variable
+    setCartData(updateCartData);
+  }
+
+  // To delete from the cart
+  function handleDelete(product) {
+    let filteredData = cartData.filter((ele, index) => {
+      return ele !== product;
+    });
+
+    localStorage.setItem("addToCart", JSON.stringify(filteredData));
+    setCartData(filteredData);
+  }
+
+  // to confirm order
+  const toast = useToast();
+  function handleOrder() {
+    if (cartData.length === 0) {
+      navigate("/product");
+    } else {
+      const examplePromise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(200), 1400);
+      });
+
+      toast.promise(examplePromise, {
+        success: {
+          title: "Order Confirmed",
+          description: `You Order has successfully confirmed your order`,
+        },
+        error: {
+          title: "Order Failed",
+          description: `Something wrong check your Order`,
+        },
+        loading: { title: "Processing..." },
+      });
+    }
+  }
+
+  const images = [
+    "https://www.boat-lifestyle.com/cdn/shop/files/RS_Banner_WEB_2_1440x.png?v=1707810457",
+    "https://www.boat-lifestyle.com/cdn/shop/files/Wave_Spectra_WEB_Banner_1_ebe1f281-9a81-40cd-b5f4-32188209e6ca_1600x.jpg?v=1708951046",
+    "https://www.boat-lifestyle.com/cdn/shop/files/Nirvana_ION-New-colors_WEB_1600x.gif?v=1709037514",
+    "https://www.boat-lifestyle.com/cdn/shop/files/RS_Banner_WEB_1_1440x.jpg?v=1706770352",
+  ];
+
+  const eachsliderStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "auto",
+    backgroundSize: "cover",
+    height: "450px",
+  };
 
   return (
     <>
+      <Box
+        w={{
+          base: "480px",
+          sm: "410px",
+          md: "803px",
+          lg : "900px",
+          xl : "1263px"
+
+        }}
+        color="white"
+      >
+        <Slide duration={1000}>
+          {images.map((image, index) => (
+            <div key={index} style={eachsliderStyle}>
+              <img src={image} alt="" />
+            </div>
+          ))}
+        </Slide>
+      </Box>
+
+      <br />
+      <br />
+      <br />
       <SimpleGrid
-     
-        columns={4}
-        w="95%"
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "100%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        ml={{
+          base: "3%", // 0px
+        }}
         justifyContent={"space-around"}
         alignItems={"center"}
-        m="auto"
         spacing="15px"
       >
         {data1.map((product, index) => (
-          <Box key={index}>
-            <Card borderRadius="20px">
+          <Box
+            h={{
+              base: "450px",
+            }}
+            key={index}
+            ml="auto"
+          >
+            <Card m="auto" borderRadius="20px">
               <CardBody>
                 <Image
                   w="350px"
@@ -91,7 +216,12 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
                       {product.rating}
                     </Text>
                     <Spacer />
-                    <Button onClick={()=> handleCart(product)} fontSize="15px" bg="black" colorScheme="white">
+                    <Button
+                      onClick={() => handleCart(product)}
+                      fontSize="15px"
+                      bg="black"
+                      colorScheme="white"
+                    >
                       Add To Cart
                     </Button>
                   </Flex>
@@ -121,15 +251,44 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
           <TabPanel>
             {" "}
             <SimpleGrid
-              columns={4}
-              w="95%"
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "100%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              ml={{
+                base: "8%", // 0px
+              }}
               justifyContent={"space-around"}
               alignItems={"center"}
-              m="auto"
               spacing="15px"
             >
               {data3.map((product, index) => (
-                <Box key={index}>
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  key={index}
+                >
                   <Card borderRadius="20px">
                     <CardBody>
                       <Image
@@ -166,15 +325,44 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
           {/* Earbuds */}
           <TabPanel>
             <SimpleGrid
-              columns={4}
-              w="95%"
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "100%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              ml={{
+                base: "8%", // 0px
+              }}
               justifyContent={"space-around"}
               alignItems={"center"}
-              m="auto"
               spacing="15px"
             >
               {data1.map((product, index) => (
-                <Box key={index}>
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  key={index}
+                >
                   <Card borderRadius="20px">
                     <CardBody>
                       <Image
@@ -213,15 +401,44 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
           <TabPanel>
             {" "}
             <SimpleGrid
-              columns={4}
-              w="95%"
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "100%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              ml={{
+                base: "8%", // 0px
+              }}
               justifyContent={"space-around"}
               alignItems={"center"}
-              m="auto"
               spacing="15px"
             >
               {data2.map((product, index) => (
-                <Box key={index}>
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  key={index}
+                >
                   <Card borderRadius="20px">
                     <CardBody>
                       <Image
@@ -259,15 +476,45 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
           {/* Celebs Selections */}
           <TabPanel>
             <SimpleGrid
-              w="98%"
-              m="auto"
-              columns={4}
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "100%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              ml={{
+                base: "8%", // 0px
+              }}
               justifyContent={"center"}
               alignItems={"center"}
               spacing={1}
             >
               {shopCard.map((card, index) => (
-                <Box m="auto" key={index}>
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  m="auto"
+                  key={index}
+                >
                   <Card m="auto" boxShadow="none">
                     <CardBody>
                       <Image src={card.image} />
@@ -295,17 +542,46 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
         New <b>Launches</b>{" "}
       </Text>
       <SimpleGrid
-        columns={4}
-        w="95%"
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "100%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        ml={{
+          base: "8%", // 0px
+        }}
         justifyContent={"space-around"}
         alignItems={"center"}
-        m="auto"
         spacing="15px"
       >
         {data2.map((product, index) => (
-          <Box key={index}>
+          <Box
+            h={{
+              base: "450px",
+            }}
+            key={index}
+          >
             <Card borderRadius="20px">
-              <CardBody>
+              <CardBody m="auto">
                 <Image
                   w="350px"
                   h="240px"
@@ -338,16 +614,53 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
 
       {/* icon details about shipping, replacement and warranty */}
       <SimpleGrid
-        columns={4}
-        justifyContent={"space-around"}
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "100%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        ml={{
+          base: "3%", // 0px
+        }}
         alignItems={"center"}
-        w="90%"
-        m="auto"
         p={10}
-        spacing={10}
+        spacing={{
+          base: "20", // 0px
+          sm: "20", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "20", // ~768px
+          lg: "20", // ~992px
+          xl: "18", // ~1280px
+          "2xl": "18", // ~1536px
+        }}
       >
         {iconData.map((data, index) => (
-          <Box key={index} m="auto" height="80px">
+          <Box
+            h={{
+              base: "450px",
+            }}
+            key={index}
+            m="auto"
+            height="80px"
+          >
             <Image w="120px" h="120px" m="auto" src={data.icon} />
             <Text textAlign={"center"}>{data.icon_name}</Text>
           </Box>
@@ -363,15 +676,67 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
       </Text>
 
       <SimpleGrid
-        w="98%"
-        m="auto"
-        columns={4}
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "100%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        ml={{
+          base: "8%", // 0px
+        }}
+        mt={{
+          base: "20%",
+          md: "", // ~768px
+          lg: "", // ~992px
+          xl: "", // ~1280px
+          "2xl": "", // ~1536px
+        }}
         justifyContent={"center"}
         alignItems={"center"}
-        spacing={1}
+        spacing={{
+          base: "15%",
+          sm: "10%",
+          md: "8%",
+          lg: "6%",
+          xl: "1%", // ~1280px
+          "2xl": "1%", // ~1536px
+        }}
       >
         {shopCard.map((card, index) => (
-          <Box m="auto" key={index}>
+          <Box
+            h={{
+              base: "450px",
+            }}
+            m="auto"
+            // mt={{
+            //   base: "20%", // 0px
+            //   sm: "20%", // ~480px. em is a relative unit and is dependant on the font size.
+            //   md: "50%", // ~768px
+            //   lg: "45%", // ~992px
+            //   xl: "30%", // ~1280px
+            //   "2xl": "20%", // ~1536px
+            // }}
+            key={index}
+          >
             <Card m="auto" boxShadow="none">
               <CardBody>
                 <Image src={card.image} />
@@ -388,6 +753,37 @@ localStorage.setItem('addToCart', JSON.stringify(updateCartData))
           </Box>
         ))}
       </SimpleGrid>
+
+      {/* for cart drawer  */}
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Your Cart</DrawerHeader>
+
+          <DrawerBody>
+            {cartData.map((product, index) => (
+              <Box key={index} m="auto" w="60%">
+                <Image mt="50%" src={product.image} alt={product.name} />
+                <Text>Name :- {product.name}</Text>
+                <Text>Price :- {product.price}</Text>
+                <Text>Rating :- {product.rating}</Text>
+                <Button ml="20%" mt="5%" onClick={() => handleDelete(product)}>Remove</Button>
+              </Box>
+            ))}
+            <Link to="/" style={{ marginLeft: "25%" }}>
+              <Button
+                onClick={handleOrder}
+                mt="10%"
+                colorScheme="white"
+                bg="black"
+              >
+                {cartData.length > 0 ? "Confirm Order" : "Start Shopping"}
+              </Button>
+            </Link>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 }
