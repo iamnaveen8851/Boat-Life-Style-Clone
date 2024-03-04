@@ -135,7 +135,8 @@ function Home() {
 
   return (
     <>
-      <Box
+    {/* slider */}
+      {/* <Box
         w={{
           base: "441px",
           sm: "410px",
@@ -153,7 +154,7 @@ function Home() {
             </div>
           ))}
         </Slide>
-      </Box>
+      </Box> */}
 
       <br />
       <br />
@@ -168,7 +169,7 @@ function Home() {
           "2xl": "4", // ~1536px
         }}
         w={{
-          base: "100%", // 0px
+          base: "90%", // 0px
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "100%", // ~768px
           lg: "100%", // ~992px
@@ -183,9 +184,9 @@ function Home() {
           xl: "auto", // ~1280px
           "2xl": "auto", // ~1536px
         }}
-        ml={{
-          base: "3%", // 0px
-        }}
+        // ml={{
+        //   base: "1%", // 0px
+        // }}
         justifyContent={"space-around"}
         alignItems={"center"}
         spacing="15px"
@@ -260,7 +261,7 @@ function Home() {
                 "2xl": "4", // ~1536px
               }}
               w={{
-                base: "100%", // 0px
+                base: "90%", // 0px
                 sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
                 md: "100%", // ~768px
                 lg: "100%", // ~992px
@@ -275,9 +276,9 @@ function Home() {
                 xl: "auto", // ~1280px
                 "2xl": "auto", // ~1536px
               }}
-              ml={{
-                base: "8%", // 0px
-              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
               justifyContent={"space-around"}
               alignItems={"center"}
               spacing="15px"
@@ -334,7 +335,7 @@ function Home() {
                 "2xl": "4", // ~1536px
               }}
               w={{
-                base: "100%", // 0px
+                base: "90%", // 0px
                 sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
                 md: "100%", // ~768px
                 lg: "100%", // ~992px
@@ -349,9 +350,9 @@ function Home() {
                 xl: "auto", // ~1280px
                 "2xl": "auto", // ~1536px
               }}
-              ml={{
-                base: "8%", // 0px
-              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
               justifyContent={"space-around"}
               alignItems={"center"}
               spacing="15px"
@@ -410,7 +411,7 @@ function Home() {
                 "2xl": "4", // ~1536px
               }}
               w={{
-                base: "100%", // 0px
+                base: "90%", // 0px
                 sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
                 md: "100%", // ~768px
                 lg: "100%", // ~992px
@@ -425,9 +426,9 @@ function Home() {
                 xl: "auto", // ~1280px
                 "2xl": "auto", // ~1536px
               }}
-              ml={{
-                base: "8%", // 0px
-              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
               justifyContent={"space-around"}
               alignItems={"center"}
               spacing="15px"
@@ -485,7 +486,7 @@ function Home() {
                 "2xl": "4", // ~1536px
               }}
               w={{
-                base: "100%", // 0px
+                base: "90%", // 0px
                 sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
                 md: "100%", // ~768px
                 lg: "100%", // ~992px
@@ -500,9 +501,9 @@ function Home() {
                 xl: "auto", // ~1280px
                 "2xl": "auto", // ~1536px
               }}
-              ml={{
-                base: "8%", // 0px
-              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
               justifyContent={"center"}
               alignItems={"center"}
               spacing={1}
@@ -551,7 +552,7 @@ function Home() {
           "2xl": "4", // ~1536px
         }}
         w={{
-          base: "100%", // 0px
+          base: "90%", // 0px
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "100%", // ~768px
           lg: "100%", // ~992px
@@ -566,9 +567,9 @@ function Home() {
           xl: "auto", // ~1280px
           "2xl": "auto", // ~1536px
         }}
-        ml={{
-          base: "8%", // 0px
-        }}
+        // ml={{
+        //   base: "8%", // 0px
+        // }}
         justifyContent={"space-around"}
         alignItems={"center"}
         spacing="15px"
@@ -685,7 +686,7 @@ function Home() {
           "2xl": "4", // ~1536px
         }}
         w={{
-          base: "100%", // 0px
+          base: "90%", // 0px
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "100%", // ~768px
           lg: "100%", // ~992px
@@ -700,9 +701,9 @@ function Home() {
           xl: "auto", // ~1280px
           "2xl": "auto", // ~1536px
         }}
-        ml={{
-          base: "8%", // 0px
-        }}
+        // ml={{
+        //   base: "8%", // 0px
+        // }}
         mt={{
           base: "20%",
           md: "", // ~768px
