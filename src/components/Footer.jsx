@@ -62,7 +62,7 @@ function Footer() {
         bg="#EBF8FF"
         // w="98%"
         w={{
-          base: "113%", // 0px
+          base: "95%", // 0px
           sm: "98%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "98%", // ~768px
           lg: "98%", // ~992px
@@ -231,7 +231,7 @@ function Footer() {
         bg="#EBF8FF"
         // w="98%"
         w={{
-          base: "113%", // 0px
+          base: "95%", // 0px
           sm: "98%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "98%", // ~768px
           lg: "98%", // ~992px
@@ -398,7 +398,7 @@ function Footer() {
         bg="#EBF8FF"
         // w="98%"
         w={{
-          base: "113%", // 0px
+          base: "95%", // 0px
           sm: "98%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "98%", // ~768px
           lg: "98%", // ~992px
@@ -560,7 +560,7 @@ function Footer() {
       <Box
         bg="#EBF8FF"
         w={{
-          base: "113%", // 0px
+          base: "95%", // 0px
           sm: "98%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "98%", // ~768px
           lg: "98%", // ~992px
