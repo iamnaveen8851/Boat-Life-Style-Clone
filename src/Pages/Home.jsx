@@ -130,7 +130,7 @@ function Home() {
     alignItems: "center",
     margin: "auto",
     backgroundSize: "cover",
-    height: "450px",
+    // height: "450px",
   };
 
   return (
@@ -145,6 +145,8 @@ function Home() {
           xl : "100%"
 
         }}
+
+        
         m={{
           base : "auto",
           sm : "auto",

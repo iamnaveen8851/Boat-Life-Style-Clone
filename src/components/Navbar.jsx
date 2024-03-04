@@ -233,23 +233,8 @@ function Navbar() {
         <b>exclusive offers & more. 🤑 Sign up!😍</b>
       </Center> */}
 
-      {/* Hamburger Menu for small screens */}
-      {/* <IconButton
-        color="black"
-        onClick={openHamMenu}
-        aria-label="Search database"
-        icon={<HamburgerIcon />}
-        display={{
-          base: "block", // 0px
-          sm: "block", // ~480px. em is a relative unit and is dependant on the font-size.
-          md: "block", // ~768px
-          lg: "none", // ~992px
-          xl: "none", // ~1280px
-          "2xl": "none", // ~1536px
-        }}
-        ml="5%"
-        mt="4%"
-      /> */}
+    
+  
       <Drawer   isOpen={isHamMenuOpen} placement="left" onClose={closeHamMenu}>
         <DrawerOverlay />
         <DrawerContent  mt="4%" >
@@ -396,6 +381,7 @@ function Navbar() {
             lg: "0%",
           }}
         >
+            {/* Hamburger Menu for small screens */}
           <IconButton
             color="black"
             onClick={openHamMenu}
