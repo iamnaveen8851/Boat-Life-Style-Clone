@@ -243,10 +243,38 @@ function Home() {
 
       <Tabs variant="soft-rounded" colorScheme="gray">
         <TabList ml="3.8%" mt="2%">
-          <Tab>Best Sellers</Tab>
-          <Tab>Top Earbuds</Tab>
-          <Tab>Top Watches</Tab>
-          <Tab>Top Selection of Celebs</Tab>
+          <Tab  fontSize={{
+          base : "12px",
+          sm : "14px",
+          md : "16",
+          lg :"20px",
+          xl : "22px",
+          "2xl" : "22px"
+        }}>Best Sellers</Tab>
+          <Tab  fontSize={{
+          base : "12px",
+          sm : "14px",
+          md : "16",
+          lg :"20px",
+          xl : "22px",
+          "2xl" : "22px"
+        }}>Top Earbuds</Tab>
+          <Tab   fontSize={{
+          base : "12px",
+          sm : "14px",
+          md : "16",
+          lg :"20px",
+          xl : "22px",
+          "2xl" : "22px"
+        }}>Top Watches</Tab>
+          <Tab   fontSize={{
+          base : "12px",
+          sm : "14px",
+          md : "16",
+          lg :"20px",
+          xl : "22px",
+          "2xl" : "22px"
+        }}>Top Selection of Celebs</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
