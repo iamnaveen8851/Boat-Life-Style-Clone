@@ -138,7 +138,7 @@ function Home() {
     {/* slider */} 
        <Box
         w={{
-          base: "100%",
+          base: "99%",
           sm: "100%",
           md: "100%",
           lg : "100%",
