@@ -342,15 +342,15 @@ function Navbar() {
         alignItems="center"
         gap="5"
         flexDirection={{
-          base: "column", // 0px
-          sm: "column", // ~480px. em is a relative unit and is dependant on the font-size.
-          md: "column", // ~768px
+          base: "row", // 0px
+          sm: "row", // ~480px. em is a relative unit and is dependant on the font-size.
+          md: "row", // ~768px
           lg: "row", // ~992px
           xl: "row", // ~1280px
           "2xl": "row", // ~1536px
         }}
         w={{
-          base: "113%", // 0px
+          base: "100%", // 0px
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font-size.
           md: "100%", // ~768px
           lg: "100%", // ~992px
