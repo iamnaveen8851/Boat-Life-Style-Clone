@@ -64,7 +64,7 @@ This is a clone of `BoAt Lifestyle website` which i created for my `Construct We
     ### React-Slide-Show-Image Library
     ### Axios Library
 
-  # Local Storage 
+  ### Local Storage 
 
 
 
