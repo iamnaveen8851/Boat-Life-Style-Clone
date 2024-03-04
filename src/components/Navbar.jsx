@@ -100,25 +100,19 @@ function Navbar() {
       let search = e.target.value.trim().toLowerCase();
 
       let res = await axios.get(
-        `http://localhost:${
-          import.meta.env.VITE_BOAT_SERVER_PORT
-        }/products`
+        `http://localhost:${import.meta.env.VITE_BOAT_SERVER_PORT}/products`
       );
 
       const { data1, data2, data3 } = res.data;
       let arr = [...data1, ...data2, ...data3];
 
-
-
-    // Work on these lines to get search results
-    const filterProducts = arr.filter((product) => {
-      const match = product.name.toLowerCase() === search;
-      console.log(product.name.toLowerCase(), search, match);
-      return match;
-    });
-    console.log(filterProducts);
-    
-     
+      // Work on these lines to get search results
+      const filterProducts = arr.filter((product) => {
+        const match = product.name.toLowerCase() === search;
+        console.log(product.name.toLowerCase(), search, match);
+        return match;
+      });
+      console.log(filterProducts);
     } catch (error) {
       console.log(error);
     }
@@ -270,7 +264,8 @@ function Navbar() {
             justifyContent={"flex-start"}
             gap={4}
           >
-            <Link to="/product"
+            <Link
+              to="/product"
               _hover={{
                 fontWeight: "550",
                 textDecoration: "underline",
@@ -280,7 +275,8 @@ function Navbar() {
             >
               boAt Personalisation
             </Link>
-            <Link to="/product1"
+            <Link
+              to="/product1"
               _hover={{
                 fontWeight: "550",
                 textDecoration: "underline",
@@ -291,7 +287,8 @@ function Navbar() {
               Gift with boAt
             </Link>
 
-            <Link to="/product2"
+            <Link
+              to="/product2"
               _hover={{
                 fontWeight: "550",
                 textDecoration: "underline",
@@ -341,7 +338,13 @@ function Navbar() {
         p={4}
         minWidth="max-content"
         alignItems="center"
-        gap="5"
+        gap={{
+          base: "2px",
+          sm: "3px",
+          lg: "5px",
+          xl: "10px",
+          "2xl": "5px",
+        }}
         flexDirection={{
           base: "column", // 0px
           sm: "colum", // ~480px. em is a relative unit and is dependant on the font-size.
@@ -466,7 +469,34 @@ function Navbar() {
             "2xl": "auto", // ~1536px
           }}
         >
-          <Box>
+          <Box
+            w={{
+              base: "50%", // 0px
+              sm: "50%", // ~480px. em is a relative unit and is dependant on the font size.
+              md: "35%", // ~768px
+              lg: "38%", // ~992px
+              xl: "20%", // ~1280px
+              "2xl": "20%", // ~1536px
+            }}
+            mr={{
+              base: "8%",
+              sm : "3%",
+              md : "2%",
+              lg : "0%",
+              xl : "0%",
+              "2xl" : "0%"
+            }}
+
+            mt={{
+              base : "5%",
+              sm : "5%",
+              md : "2%",
+              lg : "0%",
+              xl : "0%",
+              "2xl" : "0%"
+
+            }}
+          >
             <InputGroup>
               <Input
                 type="text"
@@ -509,7 +539,7 @@ function Navbar() {
           </PopoverContent>
         </Popover>
         {/* Modal */}
-        <Modal  isOpen={isModalOpen} onClose={closeModal}>
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
           <ModalOverlay />
           <ModalContent ml="10%">
             <ModalHeader fontSize={25} textAlign={"center"}>
@@ -566,8 +596,6 @@ function Navbar() {
                 </Stack>
               </Center>
             </ModalBody>
-
-           
           </ModalContent>
         </Modal>
         {/* Drawer */}
@@ -593,7 +621,11 @@ function Navbar() {
                     <Text>Name :- {product.name}</Text>
                     <Text>Price :- {product.price}</Text>
                     <Text>Rating :- {product.rating}</Text>
-                    <Button  ml="20%" mt="5%" onClick={() => handleDelete(product)}>
+                    <Button
+                      ml="20%"
+                      mt="5%"
+                      onClick={() => handleDelete(product)}
+                    >
                       Remove
                     </Button>
                   </Box>
