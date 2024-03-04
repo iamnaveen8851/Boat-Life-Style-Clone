@@ -269,7 +269,7 @@ function Navbar() {
             justifyContent={"flex-start"}
             gap={4}
           >
-            <Link
+            <Link to="/product"
               _hover={{
                 fontWeight: "550",
                 textDecoration: "underline",
@@ -279,7 +279,7 @@ function Navbar() {
             >
               boAt Personalisation
             </Link>
-            <Link
+            <Link to="/product1"
               _hover={{
                 fontWeight: "550",
                 textDecoration: "underline",
@@ -290,7 +290,7 @@ function Navbar() {
               Gift with boAt
             </Link>
 
-            <Link
+            <Link to="/product2"
               _hover={{
                 fontWeight: "550",
                 textDecoration: "underline",
