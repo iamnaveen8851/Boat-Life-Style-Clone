@@ -58,6 +58,7 @@ This is a clone of `BoAt Lifestyle website` which i created for my `Construct We
   ### -> React 
 
   ## Tools
+    ### Vite
     ### Chakra-UI Library 
     ### React-Router-Dom Library
     ### React-Slide-Show-Image Library
