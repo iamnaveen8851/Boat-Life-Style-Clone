@@ -135,16 +135,25 @@ function Home() {
 
   return (
     <>
-    {/* slider */}
-      {/* <Box
+    {/* slider */} 
+       <Box
         w={{
-          base: "441px",
-          sm: "410px",
-          md: "803px",
-          lg : "900px",
-          xl : "1263px"
+          base: "95%",
+          sm: "100%",
+          md: "100%",
+          lg : "100%",
+          xl : "100%"
 
         }}
+        m={{
+          base : "auto",
+          sm : "auto",
+          md : "auto",
+          lg : "auto",
+          xl : "auto",
+          "2xl" : "auto"
+        }}
+
         color="white"
       >
         <Slide duration={1400}>
@@ -154,7 +163,7 @@ function Home() {
             </div>
           ))}
         </Slide>
-      </Box> */}
+      </Box>
 
       <br />
       <br />
