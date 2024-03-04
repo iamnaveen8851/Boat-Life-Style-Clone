@@ -211,19 +211,20 @@ function Navbar() {
 
   return (
     <>
-      <Center
+      {/* <Center
         onClick={handleModal}
         cursor={"pointer"}
         bg="#EBF8FF"
         p={2}
-        w={{
-          base: "112%", // 0px
-          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
-          md: "100%", // ~768px
-          lg: "100%", // ~992px
-          xl: "100%", // ~1280px
-          "2xl": "100%", // ~1536px
-        }}
+        
+        // w={{
+        //   base: "100%", // 0px
+        //   sm: "150%", // ~480px. em is a relative unit and is dependant on the font size.
+        //   md: "100%", // ~768px
+        //   lg: "100%", // ~992px
+        //   xl: "100%", // ~1280px
+        //   "2xl": "100%", // ~1536px
+        // }}
         fontSize={{
           base: "10px", // 0px
           sm: "10px", // ~480px. em is a relative unit and is dependant on the font-size.
@@ -236,7 +237,7 @@ function Navbar() {
         <b>boAthead Days</b> &nbsp; <p>are coming! Leap into</p>
         &nbsp;
         <b>exclusive offers & more. 🤑 Sign up!😍</b>
-      </Center>
+      </Center> */}
 
       {/* Hamburger Menu for small screens */}
       <IconButton
