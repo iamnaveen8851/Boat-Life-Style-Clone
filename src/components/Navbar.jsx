@@ -369,9 +369,18 @@ function Navbar() {
           xl: "auto", // ~1280px
           "2xl": "auto",
         }}
+
+       
       >
         {/* logo */}
-        <Box p="2px">
+        <Box p="2px"  mt={{
+          base : "-7%",
+          sm : "-7%",
+          md : "2%",
+          lg :"0%",
+        }}
+        
+        >
           <Link to="/">
             {" "}
             <Image
@@ -395,6 +404,12 @@ function Navbar() {
           justifyContent={"space-around"}
           alignItems={"center"}
           gap={5}
+          ml={{
+            base : "0%",
+            sm: "0%",
+            md: "0%",
+            lg : "2%"
+            }}
         >
           <Link
             to="/product"
@@ -468,6 +483,7 @@ function Navbar() {
             xl: "auto", // ~1280px
             "2xl": "auto", // ~1536px
           }}
+         
         >
           <Box
             w={{
@@ -541,7 +557,15 @@ function Navbar() {
         {/* Modal */}
         <Modal isOpen={isModalOpen} onClose={closeModal}>
           <ModalOverlay />
-          <ModalContent ml="10%">
+          <ModalContent ml="2%" w={{
+            base: "90%",
+            sm : "92%",
+            md : "95%",
+            lg:  "98%",
+            xl : "100%",
+            "2xl" : "100%"
+
+          }}>
             <ModalHeader fontSize={25} textAlign={"center"}>
               Get <b>Started</b>
             </ModalHeader>

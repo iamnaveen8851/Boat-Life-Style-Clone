@@ -113,61 +113,471 @@ function Product() {
       });
     }
   }
+
   return (
     <>
-      {/* Shop by lifestyle celeb card */}
       <Text textDecoration="underline" fontSize="30px" mt="5%" ml="3%">
-        Shop by <b>Lifestyle</b>{" "}
+        Best of <b>BoAt</b>{" "}
       </Text>
 
-      <SimpleGrid
-        w="98%"
-        m="auto"
-        columns={4}
-        justifyContent={"center"}
-        alignItems={"center"}
-        spacing={1}
-      >
-        {shopCard.map((card, index) => (
-          <Box m="auto" key={index}>
-            <Card m="auto" boxShadow="none">
-              <CardBody>
-                <Image src={card.image} />
-                <Box bg="#EBF8FF" borderBottomRadius="20px" p={3}>
-                  <Heading fontSize="20px" mt="2%" textAlign="center">
-                    {card.msg}
-                  </Heading>
-                  <Link fontSize="16px" ml="35%">
-                    View all {<ArrowForwardIcon />}{" "}
-                  </Link>
+      <Tabs variant="soft-rounded" colorScheme="gray">
+        <TabList ml="3.8%" mt="2%">
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Best Sellers
+          </Tab>
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Top Earbuds
+          </Tab>
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Top Watches
+          </Tab>
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Top Selection of Celebs
+          </Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            {" "}
+            <SimpleGrid
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "90%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
+              justifyContent={"space-around"}
+              alignItems={"center"}
+              spacing="15px"
+            >
+              {data3.map((product, index) => (
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  key={index}
+                >
+                  <Card borderRadius="20px">
+                    <CardBody>
+                      <Image
+                        w="350px"
+                        h="240px"
+                        src={product.image}
+                        alt="Green double couch with wooden legs"
+                        borderRadius="lg"
+                      />
+                      <Stack mt="6" spacing="3">
+                        <Heading size="sm">{product.name}</Heading>
+                        <Heading size="sm">{product.price}</Heading>
+                        <Flex display="flex">
+                          <Text color="gold">{<StarIcon />}</Text>
+                          <Text color="black" fontSize="18px" pl={1}>
+                            {product.rating}
+                          </Text>
+                          <Spacer />
+                          <Button
+                            fontSize="15px"
+                            bg="black"
+                            colorScheme="white"
+                          >
+                            Add To Cart
+                          </Button>
+                        </Flex>
+                      </Stack>
+                    </CardBody>
+                  </Card>
                 </Box>
+              ))}
+            </SimpleGrid>
+          </TabPanel>
+          {/* Earbuds */}
+          <TabPanel>
+            <SimpleGrid
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "90%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
+              justifyContent={"space-around"}
+              alignItems={"center"}
+              spacing="15px"
+            >
+              {data1.map((product, index) => (
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  key={index}
+                >
+                  <Card borderRadius="20px">
+                    <CardBody>
+                      <Image
+                        w="350px"
+                        h="240px"
+                        src={product.image}
+                        alt="Green double couch with wooden legs"
+                        borderRadius="lg"
+                      />
+                      <Stack mt="6" spacing="3">
+                        <Heading size="sm">{product.name}</Heading>
+                        <Heading size="sm">{product.price}</Heading>
+                        <Flex display="flex">
+                          <Text color="gold">{<StarIcon />}</Text>
+                          <Text color="black" fontSize="18px" pl={1}>
+                            {product.rating}
+                          </Text>
+                          <Spacer />
+                          <Button
+                            fontSize="15px"
+                            bg="black"
+                            colorScheme="white"
+                          >
+                            Add To Cart
+                          </Button>
+                        </Flex>
+                      </Stack>
+                    </CardBody>
+                  </Card>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </TabPanel>
+
+          {/* Top watches */}
+          <TabPanel>
+            {" "}
+            <SimpleGrid
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "90%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
+              justifyContent={"space-around"}
+              alignItems={"center"}
+              spacing="15px"
+            >
+              {data2.map((product, index) => (
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  key={index}
+                >
+                  <Card borderRadius="20px">
+                    <CardBody>
+                      <Image
+                        w="350px"
+                        h="240px"
+                        src={product.image}
+                        alt="Green double couch with wooden legs"
+                        borderRadius="lg"
+                      />
+                      <Stack mt="6" spacing="3">
+                        <Heading size="sm">{product.name}</Heading>
+                        <Heading size="sm">{product.price}</Heading>
+                        <Flex display="flex">
+                          <Text color="gold">{<StarIcon />}</Text>
+                          <Text color="black" fontSize="18px" pl={1}>
+                            {product.rating}
+                          </Text>
+                          <Spacer />
+                          <Button
+                            fontSize="15px"
+                            bg="black"
+                            colorScheme="white"
+                          >
+                            Add To Cart
+                          </Button>
+                        </Flex>
+                      </Stack>
+                    </CardBody>
+                  </Card>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </TabPanel>
+
+          {/* Celebs Selections */}
+          <TabPanel>
+            <SimpleGrid
+              columns={{
+                base: "1", // 0px
+                sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "2", // ~768px
+                lg: "3", // ~992px
+                xl: "4", // ~1280px
+                "2xl": "4", // ~1536px
+              }}
+              w={{
+                base: "90%", // 0px
+                sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "100%", // ~768px
+                lg: "100%", // ~992px
+                xl: "100%", // ~1280px
+                "2xl": "100%", // ~1536px
+              }}
+              m={{
+                base: "auto", // 0px
+                sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+                md: "auto", // ~768px
+                lg: "auto", // ~992px
+                xl: "auto", // ~1280px
+                "2xl": "auto", // ~1536px
+              }}
+              // ml={{
+              //   base: "8%", // 0px
+              // }}
+              justifyContent={"center"}
+              alignItems={"center"}
+              spacing={1}
+            >
+              {shopCard.map((card, index) => (
+                <Box
+                  h={{
+                    base: "450px",
+                  }}
+                  m="auto"
+                  key={index}
+                >
+                  <Card m="auto" boxShadow="none">
+                    <CardBody>
+                      <Image src={card.image} />
+                      <Box bg="#EBF8FF" borderBottomRadius="20px" p={3}>
+                        <Heading fontSize="20px" mt="2%" textAlign="center">
+                          {card.msg}
+                        </Heading>
+                        <Link fontSize="16px" ml="35%">
+                          View all {<ArrowForwardIcon />}{" "}
+                        </Link>
+                      </Box>
+                    </CardBody>
+                  </Card>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+
+      <br />
+      <br />
+      <br />
+
+      <Text textDecoration="underline" fontSize="30px" ml="3%">
+        New <b>Launches</b>{" "}
+      </Text>
+      <SimpleGrid
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "90%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        // ml={{
+        //   base: "8%", // 0px
+        // }}
+        justifyContent={"space-around"}
+        alignItems={"center"}
+        spacing="15px"
+      >
+        {data2.map((product, index) => (
+          <Box
+            h={{
+              base: "450px",
+            }}
+            key={index}
+          >
+            <Card borderRadius="20px">
+              <CardBody m="auto">
+                <Image
+                  w="350px"
+                  h="240px"
+                  src={product.image}
+                  alt="Green double couch with wooden legs"
+                  borderRadius="lg"
+                />
+                <Stack mt="6" spacing="3">
+                  <Heading size="sm">{product.name}</Heading>
+                  <Heading size="sm">{product.price}</Heading>
+                  <Flex display="flex">
+                    <Text color="gold">{<StarIcon />}</Text>
+                    <Text color="black" fontSize="18px" pl={1}>
+                      {product.rating}
+                    </Text>
+                    <Spacer />
+                    <Button fontSize="15px" bg="black" colorScheme="white">
+                      Add To Cart
+                    </Button>
+                  </Flex>
+                </Stack>
               </CardBody>
             </Card>
           </Box>
         ))}
       </SimpleGrid>
-
       <br />
       <br />
       <br />
-
-      <Text textDecoration="underline" fontSize="30px" mt="5%" ml="3%">
-        Best of <b>BoAt</b>{" "}
-      </Text>
-
-      <br />
-      <br />
+   
       <SimpleGrid
-        columns={4}
-        w="95%"
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "90%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        // ml={{
+        //   base: "1%", // 0px
+        // }}
         justifyContent={"space-around"}
         alignItems={"center"}
-        m="auto"
         spacing="15px"
       >
         {data1.map((product, index) => (
-          <Box key={index}>
-            <Card borderRadius="20px">
+          <Box
+            h={{
+              base: "450px",
+            }}
+            key={index}
+            ml="auto"
+          >
+            <Card m="auto" borderRadius="20px">
               <CardBody>
                 <Image
                   w="350px"
@@ -200,208 +610,59 @@ function Product() {
           </Box>
         ))}
       </SimpleGrid>
-      <br />
-      <br />
-
-      <br />
-      <Tabs variant="soft-rounded" colorScheme="gray">
-        <TabList ml="3.8%" mt="2%">
-          <Tab>Best Sellers</Tab>
-          <Tab>Top Earbuds</Tab>
-          <Tab>Top Watches</Tab>
-          <Tab>Top Selection of Celebs</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            {" "}
-            <SimpleGrid
-              columns={4}
-              w="95%"
-              justifyContent={"space-around"}
-              alignItems={"center"}
-              m="auto"
-              spacing="15px"
-            >
-              {data3.map((product, index) => (
-                <Box key={index}>
-                  <Card borderRadius="20px">
-                    <CardBody>
-                      <Image
-                        w="350px"
-                        h="240px"
-                        src={product.image}
-                        alt="Green double couch with wooden legs"
-                        borderRadius="lg"
-                      />
-                      <Stack mt="6" spacing="3">
-                        <Heading size="sm">{product.name}</Heading>
-                        <Heading size="sm">{product.price}</Heading>
-                        <Flex display="flex">
-                          <Text color="gold">{<StarIcon />}</Text>
-                          <Text color="black" fontSize="18px" pl={1}>
-                            {product.rating}
-                          </Text>
-                          <Spacer />
-                          <Button 
-                           onClick={() => handleCart(product)}
-                            fontSize="15px"
-                            bg="black"
-                            colorScheme="white"
-                          >
-                            Add To Cart
-                          </Button>
-                        </Flex>
-                      </Stack>
-                    </CardBody>
-                  </Card>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </TabPanel>
-          {/* Earbuds */}
-          <TabPanel>
-            <SimpleGrid
-              columns={4}
-              w="95%"
-              justifyContent={"space-around"}
-              alignItems={"center"}
-              m="auto"
-              spacing="15px"
-            >
-              {data1.map((product, index) => (
-                <Box key={index}>
-                  <Card borderRadius="20px">
-                    <CardBody>
-                      <Image
-                        w="350px"
-                        h="240px"
-                        src={product.image}
-                        alt="Green double couch with wooden legs"
-                        borderRadius="lg"
-                      />
-                      <Stack mt="6" spacing="3">
-                        <Heading size="sm">{product.name}</Heading>
-                        <Heading size="sm">{product.price}</Heading>
-                        <Flex display="flex">
-                          <Text color="gold">{<StarIcon />}</Text>
-                          <Text color="black" fontSize="18px" pl={1}>
-                            {product.rating}
-                          </Text>
-                          <Spacer />
-                          <Button
-                           onClick={() => handleCart(product)}
-                            fontSize="15px"
-                            bg="black"
-                            colorScheme="white"
-                          >
-                            Add To Cart
-                          </Button>
-                        </Flex>
-                      </Stack>
-                    </CardBody>
-                  </Card>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </TabPanel>
-
-          {/* Top watches */}
-          <TabPanel>
-            {" "}
-            <SimpleGrid
-              columns={4}
-              w="95%"
-              justifyContent={"space-around"}
-              alignItems={"center"}
-              m="auto"
-              spacing="15px"
-            >
-              {data2.map((product, index) => (
-                <Box key={index}>
-                  <Card borderRadius="20px">
-                    <CardBody>
-                      <Image
-                        w="350px"
-                        h="240px"
-                        src={product.image}
-                        alt="Green double couch with wooden legs"
-                        borderRadius="lg"
-                      />
-                      <Stack mt="6" spacing="3">
-                        <Heading size="sm">{product.name}</Heading>
-                        <Heading size="sm">{product.price}</Heading>
-                        <Flex display="flex">
-                          <Text color="gold">{<StarIcon />}</Text>
-                          <Text color="black" fontSize="18px" pl={1}>
-                            {product.rating}
-                          </Text>
-                          <Spacer />
-                          <Button
-                           onClick={() => handleCart(product)}
-                            fontSize="15px"
-                            bg="black"
-                            colorScheme="white"
-                          >
-                            Add To Cart
-                          </Button>
-                        </Flex>
-                      </Stack>
-                    </CardBody>
-                  </Card>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </TabPanel>
-
-          {/* Celebs Selections */}
-          <TabPanel>
-            <SimpleGrid
-              w="98%"
-              m="auto"
-              columns={4}
-              justifyContent={"center"}
-              alignItems={"center"}
-              spacing={1}
-            >
-              {shopCard.map((card, index) => (
-                <Box m="auto" key={index}>
-                  <Card m="auto" boxShadow="none">
-                    <CardBody>
-                      <Image src={card.image} />
-                      <Box bg="#EBF8FF" borderBottomRadius="20px" p={3}>
-                        <Heading fontSize="20px" mt="2%" textAlign="center">
-                          {card.msg}
-                        </Heading>
-                        <Link fontSize="16px" ml="35%">
-                          View all {<ArrowForwardIcon />}{" "}
-                        </Link>
-                      </Box>
-                    </CardBody>
-                  </Card>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-      <br />
-      <br />
 
       <br />
       <br />
 
       {/* icon details about shipping, replacement and warranty */}
       <SimpleGrid
-        columns={4}
-        justifyContent={"space-around"}
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "100%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        ml={{
+          base: "3%", // 0px
+        }}
         alignItems={"center"}
-        w="90%"
-        m="auto"
         p={10}
-        spacing={10}
+        spacing={{
+          base: "20", // 0px
+          sm: "20", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "20", // ~768px
+          lg: "20", // ~992px
+          xl: "18", // ~1280px
+          "2xl": "18", // ~1536px
+        }}
       >
         {iconData.map((data, index) => (
-          <Box key={index} m="auto" height="80px">
+          <Box
+            h={{
+              base: "450px",
+            }}
+            key={index}
+            m="auto"
+            height="80px"
+          >
             <Image w="120px" h="120px" m="auto" src={data.icon} />
             <Text textAlign={"center"}>{data.icon_name}</Text>
           </Box>
@@ -410,6 +671,90 @@ function Product() {
 
       <br />
       <br />
+
+      {/* Shop by lifestyle celeb card */}
+      <Text textDecoration="underline" fontSize="30px" mt="5%" ml="3%">
+        Shop by <b>Lifestyle</b>{" "}
+      </Text>
+
+      <SimpleGrid
+        columns={{
+          base: "1", // 0px
+          sm: "2", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "2", // ~768px
+          lg: "3", // ~992px
+          xl: "4", // ~1280px
+          "2xl": "4", // ~1536px
+        }}
+        w={{
+          base: "90%", // 0px
+          sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "100%", // ~768px
+          lg: "100%", // ~992px
+          xl: "100%", // ~1280px
+          "2xl": "100%", // ~1536px
+        }}
+        m={{
+          base: "auto", // 0px
+          sm: "auto", // ~480px. em is a relative unit and is dependant on the font size.
+          md: "auto", // ~768px
+          lg: "auto", // ~992px
+          xl: "auto", // ~1280px
+          "2xl": "auto", // ~1536px
+        }}
+        // ml={{
+        //   base: "8%", // 0px
+        // }}
+        mt={{
+          base: "20%",
+          md: "", // ~768px
+          lg: "", // ~992px
+          xl: "", // ~1280px
+          "2xl": "", // ~1536px
+        }}
+        justifyContent={"center"}
+        alignItems={"center"}
+        spacing={{
+          base: "15%",
+          sm: "10%",
+          md: "8%",
+          lg: "6%",
+          xl: "1%", // ~1280px
+          "2xl": "1%", // ~1536px
+        }}
+      >
+        {shopCard.map((card, index) => (
+          <Box
+            h={{
+              base: "450px",
+            }}
+            m="auto"
+            // mt={{
+            //   base: "20%", // 0px
+            //   sm: "20%", // ~480px. em is a relative unit and is dependant on the font size.
+            //   md: "50%", // ~768px
+            //   lg: "45%", // ~992px
+            //   xl: "30%", // ~1280px
+            //   "2xl": "20%", // ~1536px
+            // }}
+            key={index}
+          >
+            <Card m="auto" boxShadow="none">
+              <CardBody>
+                <Image src={card.image} />
+                <Box bg="#EBF8FF" borderBottomRadius="20px" p={3}>
+                  <Heading fontSize="20px" mt="2%" textAlign="center">
+                    {card.msg}
+                  </Heading>
+                  <Link fontSize="16px" ml="35%">
+                    View all {<ArrowForwardIcon />}{" "}
+                  </Link>
+                </Box>
+              </CardBody>
+            </Card>
+          </Box>
+        ))}
+      </SimpleGrid>
 
       {/* for cart drawer  */}
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
@@ -425,7 +770,9 @@ function Product() {
                 <Text>Name :- {product.name}</Text>
                 <Text>Price :- {product.price}</Text>
                 <Text>Rating :- {product.rating}</Text>
-                <Button  ml="20%" mt="5%" onClick={() => handleDelete(product)}>Remove</Button>
+                <Button ml="20%" mt="5%" onClick={() => handleDelete(product)}>
+                  Remove
+                </Button>
               </Box>
             ))}
             <Link to="/" style={{ marginLeft: "25%" }}>
