@@ -345,7 +345,8 @@ function Home() {
                             {product.rating}
                           </Text>
                           <Spacer />
-                          <Button
+                          <Button 
+                           onClick={()=> handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -420,6 +421,7 @@ function Home() {
                           </Text>
                           <Spacer />
                           <Button
+                           onClick={()=> handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -496,6 +498,7 @@ function Home() {
                           </Text>
                           <Spacer />
                           <Button
+                           onClick={()=> handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -636,7 +639,7 @@ function Home() {
                       {product.rating}
                     </Text>
                     <Spacer />
-                    <Button fontSize="15px" bg="black" colorScheme="white">
+                    <Button  onClick={()=> handleCart(product)} fontSize="15px" bg="black" colorScheme="white">
                       Add To Cart
                     </Button>
                   </Flex>

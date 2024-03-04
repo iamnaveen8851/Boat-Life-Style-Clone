@@ -319,6 +319,7 @@ function Product2() {
                           </Text>
                           <Spacer />
                           <Button
+                           onClick={()=> handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -393,6 +394,7 @@ function Product2() {
                           </Text>
                           <Spacer />
                           <Button
+                           onClick={()=> handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -469,6 +471,7 @@ function Product2() {
                           </Text>
                           <Spacer />
                           <Button
+                           onClick={()=> handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -609,7 +612,7 @@ function Product2() {
                       {product.rating}
                     </Text>
                     <Spacer />
-                    <Button fontSize="15px" bg="black" colorScheme="white">
+                    <Button  onClick={()=> handleCart(product)} fontSize="15px" bg="black" colorScheme="white">
                       Add To Cart
                     </Button>
                   </Flex>
