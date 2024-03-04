@@ -234,9 +234,8 @@ function Navbar() {
       </Center> */}
 
       {/* Hamburger Menu for small screens */}
-      <IconButton
+      {/* <IconButton
         color="black"
-        // border="2px"
         onClick={openHamMenu}
         aria-label="Search database"
         icon={<HamburgerIcon />}
@@ -250,12 +249,12 @@ function Navbar() {
         }}
         ml="5%"
         mt="4%"
-      />
-      <Drawer isOpen={isHamMenuOpen} placement="left" onClose={closeHamMenu}>
+      /> */}
+      <Drawer   isOpen={isHamMenuOpen} placement="left" onClose={closeHamMenu}>
         <DrawerOverlay />
-        <DrawerContent mt="5.2%">
+        <DrawerContent  mt="4%" >
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Explore Our Products</DrawerHeader>
 
           <DrawerBody
             display={"flex"}
@@ -369,18 +368,49 @@ function Navbar() {
           xl: "auto", // ~1280px
           "2xl": "auto",
         }}
-
-       
       >
         {/* logo */}
-        <Box p="2px"  mt={{
-          base : "-7%",
-          sm : "-7%",
-          md : "2%",
-          lg :"0%",
-        }}
-        
+        <Box
+          display="flex"
+          alignItems="center"
+          // border="2px"
+          w={{
+            base: "100%",
+            sm: "100%",
+            md: "100%",
+            lg: "110px",
+            xl: "110px",
+            "2xl": "0%",
+          }}
+          gap={{
+            base: "25%",
+            sm : "35%",
+            md : "40%",
+
+          }}
+          p="2px"
+          mt={{
+            base: "1%",
+            sm: "0%",
+            md: "0%",
+            lg: "0%",
+          }}
         >
+          <IconButton
+            color="black"
+            onClick={openHamMenu}
+            aria-label="Search database"
+            icon={<HamburgerIcon />}
+            display={{
+              base: "block", // 0px
+              sm: "block", // ~480px. em is a relative unit and is dependant on the font-size.
+              md: "block", // ~768px
+              lg: "none", // ~992px
+              xl: "none", // ~1280px
+              "2xl": "none", // ~1536px
+            }}
+            
+          />
           <Link to="/">
             {" "}
             <Image
@@ -405,11 +435,11 @@ function Navbar() {
           alignItems={"center"}
           gap={5}
           ml={{
-            base : "0%",
+            base: "0%",
             sm: "0%",
             md: "0%",
-            lg : "2%"
-            }}
+            lg: "2%",
+          }}
         >
           <Link
             to="/product"
@@ -483,7 +513,6 @@ function Navbar() {
             xl: "auto", // ~1280px
             "2xl": "auto", // ~1536px
           }}
-         
         >
           <Box
             w={{
@@ -496,21 +525,19 @@ function Navbar() {
             }}
             mr={{
               base: "8%",
-              sm : "3%",
-              md : "2%",
-              lg : "0%",
-              xl : "0%",
-              "2xl" : "0%"
+              sm: "3%",
+              md: "2%",
+              lg: "5%",
+              xl: "5%",
+              "2xl": "0%",
             }}
-
             mt={{
-              base : "5%",
-              sm : "5%",
-              md : "2%",
-              lg : "0%",
-              xl : "0%",
-              "2xl" : "0%"
-
+              base: "5%",
+              sm: "5%",
+              md: "2%",
+              lg: "0%",
+              xl: "0%",
+              "2xl": "0%",
             }}
           >
             <InputGroup>
@@ -537,14 +564,14 @@ function Navbar() {
               />
             </Button>
           </PopoverTrigger>
-          <PopoverContent>
+          <PopoverContent w="100%">
             <PopoverArrow />
             <PopoverCloseButton />
             <PopoverHeader>Hi boAthead!</PopoverHeader>
             <PopoverBody>
               <Button
                 onClick={handleModal}
-                w="295px"
+                w="180px"
                 h="7"
                 colorScheme="blue"
                 bg="black"
@@ -557,15 +584,18 @@ function Navbar() {
         {/* Modal */}
         <Modal isOpen={isModalOpen} onClose={closeModal}>
           <ModalOverlay />
-          <ModalContent ml="2%" w={{
-            base: "90%",
-            sm : "92%",
-            md : "95%",
-            lg:  "98%",
-            xl : "100%",
-            "2xl" : "100%"
-
-          }}>
+          <ModalContent
+            ml="2%"
+            w={{
+              base: "90%",
+              sm: "92%",
+              md: "95%",
+              lg: "98%",
+              xl: "100%",
+              "2xl": "100%",
+            }}
+            p={2}
+          >
             <ModalHeader fontSize={25} textAlign={"center"}>
               Get <b>Started</b>
             </ModalHeader>
