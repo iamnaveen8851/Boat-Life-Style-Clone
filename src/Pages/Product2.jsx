@@ -48,20 +48,19 @@ function Product2() {
 
   async function getData() {
     try {
-      let res = await axios.get(
-        `http://localhost:${import.meta.env.VITE_BOAT_SERVER_PORT}/products`
-      );
+      // let res = await axios.get(`http://localhost:${import.meta.env.VITE_BOAT_SERVER_PORT}/products`);
+      let res = await axios.get(`https://iamnaveen8851.github.io/Mock-Product-Server/db.json`);
 
-      setData1(res.data.data1);
-      setData2(res.data.data2);
-      setData3(res.data.data3);
-      setIconData(res.data.iconData);
-      setShopCard(res.data.shopHoldings);
+     
+      setData1(res.data.products.data1);
+      setData2(res.data.products.data2);
+      setData3(res.data.products.data3);
+      setIconData(res.data.products.iconData);
+      setShopCard(res.data.products.shopHoldings);
     } catch (error) {
       console.log(error);
     }
   }
-
   //   To add data in the local storage
   function handleCart(product) {
     onOpen();
