@@ -49,11 +49,11 @@ function Home() {
     getData();
   }, []);
 
+  const BASE_URL = import.meta.env.VITE_BOAT_SERVER_PORT;
+  // console.log(BASE_URL);
   async function getData() {
     try {
-      let res = await axios.get(
-        `http://localhost:${import.meta.env.VITE_BOAT_SERVER_PORT}/products`
-      );
+      let res = await axios.get(`${BASE_URL}/products`);
 
       setData1(res.data.data1);
       setData2(res.data.data2);
@@ -135,27 +135,23 @@ function Home() {
 
   return (
     <>
-    {/* slider */} 
-       <Box
+      {/* slider */}
+      <Box
         w={{
           base: "99%",
           sm: "100%",
           md: "100%",
-          lg : "100%",
-          xl : "100%"
-
+          lg: "100%",
+          xl: "100%",
         }}
-
-        
         m={{
-          base : "auto",
-          sm : "auto",
-          md : "auto",
-          lg : "auto",
-          xl : "auto",
-          "2xl" : "auto"
+          base: "auto",
+          sm: "auto",
+          md: "auto",
+          lg: "auto",
+          xl: "auto",
+          "2xl": "auto",
         }}
-
         color="white"
       >
         <Slide duration={1000}>
@@ -254,38 +250,54 @@ function Home() {
 
       <Tabs variant="soft-rounded" colorScheme="gray">
         <TabList ml="3.8%" mt="2%">
-          <Tab  fontSize={{
-          base : "12px",
-          sm : "14px",
-          md : "16",
-          lg :"20px",
-          xl : "22px",
-          "2xl" : "22px"
-        }}>Best Sellers</Tab>
-          <Tab  fontSize={{
-          base : "12px",
-          sm : "14px",
-          md : "16",
-          lg :"20px",
-          xl : "22px",
-          "2xl" : "22px"
-        }}>Top Earbuds</Tab>
-          <Tab   fontSize={{
-          base : "12px",
-          sm : "14px",
-          md : "16",
-          lg :"20px",
-          xl : "22px",
-          "2xl" : "22px"
-        }}>Top Watches</Tab>
-          <Tab   fontSize={{
-          base : "12px",
-          sm : "14px",
-          md : "16",
-          lg :"20px",
-          xl : "22px",
-          "2xl" : "22px"
-        }}>Top Selection of Celebs</Tab>
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Best Sellers
+          </Tab>
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Top Earbuds
+          </Tab>
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Top Watches
+          </Tab>
+          <Tab
+            fontSize={{
+              base: "12px",
+              sm: "14px",
+              md: "16",
+              lg: "20px",
+              xl: "22px",
+              "2xl": "22px",
+            }}
+          >
+            Top Selection of Celebs
+          </Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
@@ -347,8 +359,8 @@ function Home() {
                             {product.rating}
                           </Text>
                           <Spacer />
-                          <Button 
-                           onClick={()=> handleCart(product)}
+                          <Button
+                            onClick={() => handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -423,7 +435,7 @@ function Home() {
                           </Text>
                           <Spacer />
                           <Button
-                           onClick={()=> handleCart(product)}
+                            onClick={() => handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -500,7 +512,7 @@ function Home() {
                           </Text>
                           <Spacer />
                           <Button
-                           onClick={()=> handleCart(product)}
+                            onClick={() => handleCart(product)}
                             fontSize="15px"
                             bg="black"
                             colorScheme="white"
@@ -641,7 +653,12 @@ function Home() {
                       {product.rating}
                     </Text>
                     <Spacer />
-                    <Button  onClick={()=> handleCart(product)} fontSize="15px" bg="black" colorScheme="white">
+                    <Button
+                      onClick={() => handleCart(product)}
+                      fontSize="15px"
+                      bg="black"
+                      colorScheme="white"
+                    >
                       Add To Cart
                     </Button>
                   </Flex>
@@ -811,7 +828,9 @@ function Home() {
                 <Text>Name :- {product.name}</Text>
                 <Text>Price :- {product.price}</Text>
                 <Text>Rating :- {product.rating}</Text>
-                <Button ml="20%" mt="5%" onClick={() => handleDelete(product)}>Remove</Button>
+                <Button ml="20%" mt="5%" onClick={() => handleDelete(product)}>
+                  Remove
+                </Button>
               </Box>
             ))}
             <Link to="/" style={{ marginLeft: "25%" }}>

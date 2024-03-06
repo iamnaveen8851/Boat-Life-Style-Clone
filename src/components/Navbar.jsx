@@ -97,7 +97,7 @@ function Navbar() {
   // To see search  results
   async function handleSearch(e) {
     try {
-      let search = e.target.value.trim().toLowerCase();
+      let search = e.target.value.toLowerCase();
 
       let res = await axios.get(
         `http://localhost:${import.meta.env.VITE_BOAT_SERVER_PORT}/products`
@@ -108,9 +108,7 @@ function Navbar() {
 
       // Work on these lines to get search results
       const filterProducts = arr.filter((product) => {
-        const match = product.name.toLowerCase() === search;
-        console.log(product.name.toLowerCase(), search, match);
-        return match;
+        return product.name.toLowerCase() === search
       });
       console.log(filterProducts);
     } catch (error) {
