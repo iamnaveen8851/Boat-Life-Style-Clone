@@ -49,8 +49,14 @@ function Home() {
     getData();
   }, []);
 
-  const BASE_URL = import.meta.env.VITE_BOAT_SERVER_URL;
-  console.log(BASE_URL);
+  const BASE_PRODUCTION_URL = import.meta.env.VITE_BASE_PRODUCTION_URL
+  const BASE_DEV_URL = import.meta.env.VITE_BOAT_SERVER_URL;
+  
+  const CURRENT_ENVIRONMENT = import.meta.env.MODE
+
+  const BASE_URL = CURRENT_ENVIRONMENT === 'production' ? BASE_PRODUCTION_URL : BASE_DEV_URL
+
+ 
   async function getData() {
     try {
       let res = await axios.get(`${BASE_URL}/products`);
