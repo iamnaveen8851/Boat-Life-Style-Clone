@@ -50,11 +50,11 @@ function Home() {
   }, []);
 
   
-  const BASE_URL = import.meta.env.VITE_BOAT_SERVER_URL;
+
 
   async function getData() {
     try {
-      let res = await axios.get(`${BASE_URL}/products`);
+      let res = await axios.get(`http://localhost:${import.meta.env.VITE_BOAT_SERVER_PORT}/products`);
 
       setData1(res.data.data1);
       setData2(res.data.data2);
