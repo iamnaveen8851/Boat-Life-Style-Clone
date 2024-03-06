@@ -52,7 +52,7 @@ function Product2() {
   async function getData() {
     try {
       let res = await axios.get(
-        `${BASE_URL}`
+        `${BASE_URL}/products`
       );
 
       setData1(res.data.data1);
