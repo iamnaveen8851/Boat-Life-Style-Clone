@@ -53,7 +53,7 @@ function Home() {
   console.log(BASE_URL);
   async function getData() {
     try {
-      let res = await axios.get(`${BASE_URL}`);
+      let res = await axios.get(`${BASE_URL}/products`);
 
       setData1(res.data.data1);
       setData2(res.data.data2);
