@@ -47,7 +47,7 @@ function Product() {
   }, []);
 
 
-  const BASE_URL = import.meta.env.VITE_BOAT_SERVER_PORT;
+  const BASE_URL = import.meta.env.VITE_BOAT_SERVER_URL;
   async function getData() {
     try {
       let res = await axios.get(

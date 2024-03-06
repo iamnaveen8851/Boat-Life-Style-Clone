@@ -49,7 +49,7 @@ function Home() {
     getData();
   }, []);
 
-  const BASE_URL = import.meta.env.VITE_BOAT_SERVER_PORT;
+  const BASE_URL = import.meta.env.VITE_BOAT_SERVER_URL;
   console.log(BASE_URL);
   async function getData() {
     try {
